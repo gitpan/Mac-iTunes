@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.7 2002/08/31 23:23:05 comdog Exp $
+# $Id: Makefile.PL,v 1.11 2002/09/27 09:40:08 comdog Exp $
 use ExtUtils::MakeMaker;
 
 open IN,  "mp3/iTunes_Music_Library";
@@ -6,32 +6,45 @@ open OUT, "> mp3/iTunes Music Library";
 
 print OUT do { local $/; <IN> };
 
-use Test::Manifest qw(get_t_files);
+sub ExtUtils::MM_Any::test_via_harness
+	{
+    my($self, $perl, $tests) = @_;
 
+    return qq|\t$perl "-MTest::Manifest" | .
+           qq|"-e" "run_t_manifest(\$(TEST_VERBOSE), '\$(INST_LIB)', | .
+           qq|'\$(INST_ARCHLIB)')"\n|;
+	}
+
+	
 WriteMakefile(
     'NAME'		    => 'Mac::iTunes',
-	'VERSION'       => '0.6_01',
+	'VERSION'       => '0.7',
 	
     'PM'            => {
-    	'lib/iTunes.pm'       => '$(INST_LIBDIR)/iTunes.pm',
-    	'lib/Playlist.pm'     => '$(INST_LIBDIR)/iTunes/Playlist.pm',
+     	'lib/AppleScript.pm'  => '$(INST_LIBDIR)/iTunes/AppleScript.pm',
     	'lib/Item.pm'         => '$(INST_LIBDIR)/iTunes/Item.pm',
+	   	'lib/iTunes.pm'       => '$(INST_LIBDIR)/iTunes.pm',
     	'lib/Parse.pm'        => '$(INST_LIBDIR)/iTunes/Library/Parse.pm',
+    	'lib/Playlist.pm'     => '$(INST_LIBDIR)/iTunes/Playlist.pm',
+    	'lib/Preferences.pm'  => '$(INST_LIBDIR)/iTunes/Preferences.pm',
     	'lib/Write.pm'        => '$(INST_LIBDIR)/iTunes/Library/Write.pm',
-    	'lib/AppleScript.pm'  => '$(INST_LIBDIR)/iTunes/AppleScript.pm',
     	'doc/file_format.pod' => '$(INST_LIBDIR)/iTunes/FileFormat.pm',
     	},
 
 	'PREREQ_PM' => {
-		Test::Manifest    => undef,
-		Test::More        => undef,
-		Test::Pod         => undef,
-		Mac::AppleScript  => undef,
-		Mac::PropertyList => undef,
+		'File::Find::Rule'  => '0',
+		'Mac::AppleScript'  => '0',
+		'Mac::Path::Util'   => '0',
+		'Mac::PropertyList' => '0',
+		'MP3::Info'         => '0',
+		'Test::Data'        => '0',
+		'Test::Manifest'    => '0',
+		'Test::More'        => '0',
+		'Test::Pod'         => '0',
+		'Test::Prereq'      => '0.05',
+		'Time::HiRes'       => '0',
 		},
 		    	
-    test   => { TESTS      => scalar get_t_files() },
-    depend => { 'Makefile' => 't/test_manifest' },
     clean  => { FILES      => q|"mp3/iTunes Music Library"| },
     	
 	);

@@ -1,8 +1,16 @@
 load.t
 pod.t
+prereq.t
+check_mp3.t
 itunes.t
 item.t
 playlist.t
 parse.t
 parse3.t
+preferences.t
+setup_itunes.t
+track_info.t
+get_playlists.t
+get_tracks.t
+position.t
 controller.t

@@ -1,5 +1,6 @@
-# $Id: Playlist.pm,v 1.5 2002/08/30 08:21:47 comdog Exp $
+# $Id: Playlist.pm,v 1.6 2002/09/27 09:17:31 comdog Exp $
 package Mac::iTunes::Playlist;
+use strict;
 
 =head1 NAME
 

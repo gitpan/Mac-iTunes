@@ -1,11 +1,19 @@
-# $Id: load.t,v 1.1 2002/08/30 08:21:47 comdog Exp $
+# $Id: load.t,v 1.3 2002/09/27 09:20:00 comdog Exp $
 
-use Test::More tests => 7;
+BEGIN {
+	use File::Find::Rule;
+	@classes = map { my $x = $_;
+		$x =~ s|^blib/lib/||;
+		$x =~ s|/|::|g;
+		$x =~ s|\.pm$||;
+		$x;
+		} File::Find::Rule->file()->name( '*.pm' )->in( 'blib/lib' );
+	}
 
-my @classes = ( "Mac::iTunes", map { "Mac::iTunes::$_" } qw( AppleScript FileFormat
-	Playlist Item Library::Parse Library::Write ) );
+use Test::More tests => scalar @classes;
 	
 foreach my $class ( @classes )
 	{
-	use_ok( $class );
+	print "bail out! $class did not compile\n" unless use_ok( $class );
 	}
+

@@ -1,13 +1,16 @@
-# $Id: iTunes.pm,v 1.5 2002/08/30 08:39:34 comdog Exp $
+# $Id: iTunes.pm,v 1.6 2002/09/01 12:23:07 comdog Exp $
 package Mac::iTunes;
+use strict;
+
+use base qw(Exporter);
+use vars qw($VERSION);
 
 use Mac::iTunes::Item;
 use Mac::iTunes::Playlist;
 
 require Exporter;
-use base qw(Exporter);
 
-$VERSION = '0.01';
+$VERSION = '0.7';
 
 =head1 NAME
 
@@ -61,7 +64,21 @@ sub controller
 	
 	return Mac::iTunes::AppleScript->new();
 	}
+
+=item preferences( [ FILENAME ]
+
+
+=cut
+
+sub preferences
+	{
+	my $class    = shift;
+	my $filename = shift;
 	
+	require Mac::iTunes::Preferences;
+	Mac::iTunes::Preferences->parse_file( $filename );
+	}
+		
 =item playlists
 
 In list context, returns a list of the titles of the playlists.
@@ -246,8 +263,6 @@ sub _not_implemented
 
 	Carp::croak( "$function is unimplemented" );
 	}
-	
-"See why 1984 won't be like 1984";
 
 =back
 
@@ -259,8 +274,14 @@ sub _not_implemented
 
 =head1 AUTHOR
 
-Copyright 2002, brian d foy <bdfoy@cpan.org>
+brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2002, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 
 =cut
+	
+"See why 1984 won't be like 1984";

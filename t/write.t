@@ -1,5 +1,5 @@
-# $Id: write.t,v 1.1 2002/08/30 08:21:47 comdog Exp $
+# $Id: write.t,v 1.2 2002/09/27 09:20:00 comdog Exp $
 
-use Test::More test => 1;
+use Test::More tests => 1;
 
 ok( 1, "Write.pm");

@@ -1,10 +1,10 @@
-# $Id: Preferences.pm,v 1.4 2002/11/27 03:35:05 comdog Exp $
+# $Id: Preferences.pm,v 1.5 2002/12/02 03:54:32 comdog Exp $
 package Mac::iTunes::Preferences;
 use strict;
 
 use vars qw($VERSION);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.4 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.5 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -28,7 +28,7 @@ sub _default_prefs
 	}
 
 =over 4
-	
+
 =item parse_file( FILENAME )
 
 =cut
@@ -37,14 +37,14 @@ sub parse_file
 	{
 	my $class = shift;
 	my $filename = shift || _default_prefs;
-	
+
 	open my $fh, $filename or return;
 	my $string = do { local $/; <$fh> };
 	close $fh;
-	
+
 	$class->parse( $string );
 	}
-	
+
 =item parse( STRING )
 
 =cut
@@ -53,12 +53,12 @@ sub parse
 	{
 	my $class  = shift;
 	my $string = shift;
-	
+
 	my $plist = Mac::PropertyList::parse_plist( $string );
-	
+
 	bless $plist, $class;
 	}
-	
+
 =back
 
 =head1 SOURCE AVAILABILITY
@@ -67,7 +67,7 @@ This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
 	https://sourceforge.net/projects/brian-d-foy/
-	
+
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
 

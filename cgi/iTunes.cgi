@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: iTunes.cgi,v 1.3 2002/09/30 05:09:02 comdog Exp $
+# $Id: iTunes.cgi,v 1.4 2002/12/02 04:23:45 comdog Exp $
 use strict;
 
 use CGI qw(:standard);
@@ -13,6 +13,8 @@ my $Template = '/Users/brian/Dev/MacOSX/iTunes/html/iTunes.html';
 iTunes.cgi - control iTunes from the web
 
 =head1 SYNOPSIS
+
+run as a CGI script
 
 =head1 DESCRIPTION
 
@@ -44,9 +46,9 @@ elsif( $set_playlist )
 	$controller->_set_playlist( $set_playlist );
 	$playlist = $set_playlist;
 	}
-	
+
 my %var;
-	
+
 $var{base}      = 'http://10.0.1.2:8080/cgi-bin/iTunes.cgi';
 $var{state}     = $controller->player_state;
 $var{current}   = $controller->current_track_name;

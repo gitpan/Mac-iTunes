@@ -1,4 +1,4 @@
-# $Id: AppleScript.pm,v 1.10 2002/12/02 04:23:45 comdog Exp $
+# $Id: AppleScript.pm,v 1.12 2004/09/18 16:39:16 comdog Exp $
 package Mac::iTunes::AppleScript;
 use strict;
 
@@ -10,7 +10,7 @@ use File::Spec;
 use Mac::AppleScript qw(RunAppleScript);
 use Mac::Path::Util;
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.10 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.12 $ =~ m/ (\d+) \. (\d+) /gx;
 
 my $Singleton = undef;
 @EXPORT_OK = qw(TRUE FALSE PLAYING STOPPED PAUSED SMALL MEDIUM LARGE);
@@ -287,7 +287,7 @@ sub _get_mac_path
 	return unless -e $path;
 
 	my $util = Mac::Path::Util->new( $path );
-	$util->use_applescript(1);
+	#$util->use_applescript(1); XXX: what is this?
 
 	my $mac_path = $util->mac_path;
 
@@ -336,7 +336,7 @@ sub track_file_exists
 	my $file     = shift;
 
 	my $mac_path = $self->_get_mac_path( $file );
-	return unless defined $mac_path;	
+	return unless defined $mac_path;
 	}
 
 =item get_track_at_position( POSITION [, PLAYLIST ] )
@@ -406,7 +406,7 @@ SCRIPT
 
 	my $result = $self->tell( $script );
 
-	my @list = split /\015/, $result; 
+	my @list = split /\015/, $result;
 
 	#local $" = " <-> ";
 	#print STDERR "Found " . @list . " items [@list]\n";
@@ -442,7 +442,7 @@ SCRIPT
 	my $result = $self->tell( $script );
 #	print STDERR "Result is $result\n";
 
-	my @list = split /\015/, $result; 
+	my @list = split /\015/, $result;
 #	local $" = " <-> ";
 #	print STDERR "Found " . @list . " items [@list]\n";
 	return \@list;
@@ -709,14 +709,14 @@ the following symbolic constants:
 This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
-	https://sourceforge.net/projects/brian-d-foy/
+	http://sourceforge.net/projects/brian-d-foy/
 
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
 
 =head1 AUTHOR
 
-brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 

@@ -1,10 +1,9 @@
-# $Id: preferences.t,v 1.2 2002/09/20 22:55:51 comdog Exp $
+# $Id: preferences.t,v 1.3 2004/02/03 22:27:11 comdog Exp $
 
 use Test::More tests => 2;
 
 use Mac::iTunes;
 use Mac::iTunes::Preferences;
-use Time::HiRes;
 
 my $file = "plists/com.apple.iTunes.plist";
 my $prefs;

@@ -1,10 +1,21 @@
-# $Id: track_info.t,v 1.2 2002/09/27 09:20:00 comdog Exp $
+# $Id: track_info.t,v 1.4 2004/09/18 16:39:17 comdog Exp $
 use strict;
 
-use lib  qw(./t/lib ./lib);
+use lib qw(./t/lib ./lib);
 
-use Test::More tests => 4;
+use Test::More;
 use Mac::iTunes;
+
+eval "use Mac::iTunes::AppleScript qw(:boolean :state :size)";
+
+if( $@ )
+	{
+	plan skip_all => "Skipping tests for Mac::iTunes::Applescript"
+	}
+else
+	{
+	plan tests => 4;
+	}
 
 require "test_data.pl";
 

@@ -1,21 +1,31 @@
-# $Id: position.t,v 1.3 2002/11/14 08:04:20 comdog Exp $
+# $Id: position.t,v 1.4 2004/02/03 22:27:11 comdog Exp $
 use strict;
 
-use Test::More tests => 6;
-use Test::Data qw(Scalar);
-
+use Test::More;
 use Mac::iTunes;
-use Mac::iTunes::AppleScript qw(:state);
+
+eval { use Mac::iTunes::AppleScript };
+
+if( $@ )
+	{
+	plan skip_all => "Skipping tests: Need Mac::iTunes::Applescript"
+	}
+else
+	{
+	plan tests => 6;
+	}
 
 my $controller = Mac::iTunes->controller;
 isa_ok( $controller, 'Mac::iTunes::AppleScript' );
 
 $controller->stop;
-is( $controller->player_state, STOPPED, 'Player is stopped' );
+is( $controller->player_state, Mac::iTunes::AppleScript::STOPPED, 
+	'Player is stopped' );
 is( $controller->position, 0, 'Player is at start of track' );
 
 $controller->play;
-is( $controller->player_state, PLAYING, 'Player is playing' );
+is( $controller->player_state, Mac::iTunes::AppleScript::PLAYING, 
+	'Player is playing' );
 defined_ok( $controller->position );
 sleep 3;
-greater_than( $controller->position, 2 );
+cmp_ok( $controller->position, '>', 2, "The tune is playing" );

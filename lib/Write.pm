@@ -1,11 +1,11 @@
-# $Id: Write.pm,v 1.6 2002/12/02 04:23:45 comdog Exp $
+# $Id: Write.pm,v 1.9 2004/09/18 16:39:17 comdog Exp $
 package Mac::iTunes::Library::Write;
 use strict;
 
 use base qw(Mac::iTunes);
 use vars qw($VERSION $XML_HEAD $XML_FOOT);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.6 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -22,10 +22,9 @@ file.
 
 =head1 METHODS
 
-=over 4 
+=over 4
 
 =item as_xml
-
 
 =cut
 
@@ -115,8 +114,6 @@ XML
 	return $str;
 	}
 
-=cut
-
 =back
 
 =head1 SOURCE AVAILABILITY
@@ -124,7 +121,7 @@ XML
 This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
-	https://sourceforge.net/projects/brian-d-foy/
+	http://sourceforge.net/projects/brian-d-foy/
 
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
@@ -139,7 +136,7 @@ L<Mac::iTunes>
 
 =head1 AUTHOR
 
-brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 

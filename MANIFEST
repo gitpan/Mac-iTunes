@@ -2,6 +2,8 @@ Changes
 MANIFEST			This list of files
 MANIFEST.SKIP
 Makefile.PL
+META.yml
+README
 applescript/add_a_track.osa
 applescript/add_playlist.osa
 applescript/add_track.osa
@@ -51,6 +53,7 @@ mp3/empty2.mp3
 mp3/empty3.mp3
 mp3/iTunes_3_Music_Library
 mp3/iTunes_Music_Library
+mp3/Audible_file
 plists/com.apple.iTunes.plist
 t/check_mp3.t
 t/controller.t
@@ -60,16 +63,20 @@ t/item.t
 t/itunes.t
 t/lib/test_data.pl
 t/load.t
+t/endian.t
 t/parse.t
 t/parse3.t
+t/parse4.t
+t/parse_audible.t
 t/playlist.t
 t/pod.t
 t/position.t
 t/preferences.t
 t/prereq.t
 t/setup_itunes.t
-t/test_manifest
 t/track_info.t
 t/write.t
 tk/tk-itunes.pl
 tk/tkitunes.rc
+README
+META.yml

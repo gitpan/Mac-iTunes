@@ -1,16 +1,17 @@
-# $Id: iTunes.pm,v 1.13 2003/01/03 20:20:36 comdog Exp $
+# $Id: iTunes.pm,v 1.15 2004/09/18 16:39:17 comdog Exp $
 package Mac::iTunes;
 use strict;
 
 use base qw(Exporter);
 use vars qw($VERSION);
 
+use Carp qw(carp);
 use Mac::iTunes::Item;
 use Mac::iTunes::Playlist;
 
 require Exporter;
 
-$VERSION = '0.82';
+$VERSION = '0.84';
 
 =head1 NAME
 
@@ -20,6 +21,7 @@ Mac::iTunes - interact with and control iTunes
 
 use Mac::iTunes;
 
+# if you have Mac::iTunes::AppleScript
 my $controller = Mac::iTunes->controller();
 
 my $library = Mac::iTunes->new( $library_path );
@@ -28,11 +30,11 @@ my $library = Mac::iTunes->new( $library_path );
 
 =head2 METHODS
 
-=over 4 
+=over 4
 
 =item new()
 
-Creates a new, empty Mac::iTunes object.  If you want to read a 
+Creates a new, empty Mac::iTunes object.  If you want to read a
 current library, use read().
 
 Returns false on failure.
@@ -55,7 +57,7 @@ sub new
 =item controller()
 
 Creates a new Mac::iTunes controller object.  See L<Mac::iTunes::Applescript>
-for methods.
+for methods.  This method is not available on non-Mac systems.
 
 =cut
 
@@ -65,13 +67,21 @@ sub controller
 
 	my $self = {};
 
-	require Mac::iTunes::AppleScript;
+	eval "use Mac::iTunes::AppleScript";
+
+	if( $@ )
+		{
+		carp "You need Mac::iTunes::AppleScript to use an iTunes controller";
+		return;
+		}
 
 	return Mac::iTunes::AppleScript->new();
 	}
 
-=item preferences( [ FILENAME ]
+=item preferences( [ FILENAME ] )
 
+Read the iTunes preferences from the given FILENAME, or the file
+~/Library/Preferences/com.apple.iTunes.plist .
 
 =cut
 
@@ -80,7 +90,11 @@ sub preferences
 	my $class    = shift;
 	my $filename = shift;
 
+	$filename = "$ENV{HOME}/Library/Preferences/com.apple.iTunes.plist"
+		unless defined $filename;
+
 	require Mac::iTunes::Preferences;
+
 	Mac::iTunes::Preferences->parse_file( $filename );
 	}
 
@@ -104,8 +118,8 @@ sub playlists
 
 Takes a playlist title argument.
 
-Extracts a Mac::Playlist object from the music library.  Returns 
-false if the playlist does not exist.
+Extracts a Mac::Playlist object from the music library.  Returns
+undef if the playlist does not exist.
 
 =cut
 
@@ -121,11 +135,13 @@ sub get_playlist
 	return $playlist;
 	}
 
-=item add_playlist( OBJECT )
+=item add_playlist( PLAYLIST_OBJECT )
 
-Takes a Mac::iTunes::Playlist objext as its only argument.
+Takes a Mac::iTunes::Playlist object as its only argument.
 
-Adds the playlist to the music library.
+Adds the playlist to the music library and returns a true
+value.  If it cannot add the playlist object, perhaps because
+it is not a playlist object, it returns undef.
 
 =cut
 
@@ -150,8 +166,8 @@ sub add_playlist
 
 =item delete_playlist( PLAYLIST | OBJECT )
 
-Takes a playlist title or Mac::iTunes::Playlist object as 
-an argument.  
+Takes a playlist title or Mac::iTunes::Playlist object as
+an argument.
 
 Removes the playlist from the music library.
 
@@ -176,8 +192,8 @@ sub delete_playlist
 
 =item playlist_exists( PLAYLIST | OBJECT )
 
-Takes a playlist title or Mac::iTunes::Playlist object as 
-an argument.  
+Takes a playlist title or Mac::iTunes::Playlist object as
+an argument.
 
 Returns true if the playlist exists in the music library, and false
 otherwise.
@@ -187,7 +203,7 @@ the same title, or if the object matches another object in
 the music library.  See Mac::iTunes::Playlist to see how
 one playlist object may match another.
 
-NOTE:  at the moment, if you use an object argument, the 
+NOTE:  at the moment, if you use an object argument, the
 function extracts the title of the playlist and sees if that
 title is in the library.  this is just a placeholder until i
 come up with something better.
@@ -207,13 +223,13 @@ sub playlist_exists
 		$title = $title->title;
 		}
 
-	return exists ${ $self->{_playlists} }{ $title };	
+	return exists ${ $self->{_playlists} }{ $title };
 	}
 
 =item read( FILENAME )
 
 Reads the named iTunes Music Library file and uses it to form the
-music library object, replacing any other data already in the 
+music library object, replacing any other data already in the
 object.
 
 =cut
@@ -291,18 +307,18 @@ Mac OS X
 This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
-	https://sourceforge.net/projects/brian-d-foy/
+	http://sourceforge.net/projects/brian-d-foy/
 
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
 
 =head1 AUTHOR
 
-brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2003, brian d foy, All rights reserved
+Copyright 2004, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

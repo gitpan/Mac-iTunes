@@ -1,17 +1,5 @@
-# $Id: pod.t,v 1.2 2002/09/27 09:20:00 comdog Exp $
-use strict;
-
-use vars qw(@files @scripts);
-
-BEGIN {
-	use File::Find::Rule;
-	@files = File::Find::Rule->file()->name( '*.pm' )->in( 'blib/lib' );
-	@scripts = qw(tk/tk-itunes.pl cgi/iTunes.cgi);
-	}
-
-use Test::Pod tests => scalar @files + scalar @scripts;
-
-foreach my $file ( @files, @scripts )
-	{
-	pod_ok($file);
-	}
+#$Id: pod.t,v 1.4 2004/02/03 22:16:22 comdog Exp $
+use Test::More;
+eval "use Test::Pod 1.00";
+plan skip_all => "Test::Pod 1.00 required for testing POD" if $@;
+all_pod_files_ok();

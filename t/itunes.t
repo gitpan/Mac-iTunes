@@ -1,9 +1,9 @@
-# $Id: itunes.t,v 1.1 2002/08/30 08:21:47 comdog Exp $
+# $Id: itunes.t,v 1.4 2004/02/03 22:27:11 comdog Exp $
 
-use Test::More tests => 16;
+use Test::More tests => 18;
 
-use Mac::iTunes::Playlist;
-use Mac::iTunes;
+BEGIN { use_ok( 'Mac::iTunes::Playlist' ); }
+BEGIN { use_ok( 'Mac::iTunes' ); }
 
 my $Title = 'Schoolhouse Rock';
 
@@ -21,14 +21,14 @@ my $fetched;
 ok( $fetched = $iTunes->get_playlist( $Title ),  'Fetch playlist'  );
 is( $fetched, $playlist,                         'Playlist test'   );
 
-ok( $iTunes->get_playlist( "Doesn't Exist" ) == 0, 'Non-existent playlist' );
+is( $iTunes->get_playlist( "Doesn't Exist" ), undef, 'Non-existent playlist' );
 
 ok( $iTunes->playlist_exists( $playlist ),      'Playlist exist before delete' );
 ok( $iTunes->delete_playlist( $playlist ),      'Delete playlist' );
 ok( $iTunes->playlist_exists( $playlist ) == 0, 'Playlist exists after delete' );
 is( $iTunes->playlists, 0,                      'Playlist count after delete'  );
 
-ok( $iTunes->add_playlist( ) == 0,          'Check null playlist'   );
-ok( $iTunes->add_playlist( undef ) == 0,    'Check undef playlist'  );
-ok( $iTunes->add_playlist( 'Title' ) == 0,  'Check string playlist' );
-ok( $iTunes->add_playlist( $iTunes ) == 0,  'Check object type'     );
+is( $iTunes->add_playlist( ),         undef,  'Check null playlist'   );
+is( $iTunes->add_playlist( undef ),   undef,  'Check undef playlist'  );
+is( $iTunes->add_playlist( 'Title' ), undef,  'Check string playlist' );
+is( $iTunes->add_playlist( $iTunes ), undef,  'Check object type'     );

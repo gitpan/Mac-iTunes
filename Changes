@@ -1,5 +1,11 @@
-# $Id: Changes,v 1.4 2002/12/02 04:23:45 comdog Exp $
+# $Id: Changes,v 1.5 2003/01/03 20:34:08 comdog Exp $
 Revision history for Perl extension MacOSX::iTunes.
+
+0.82 - Fri Jan  3 12:33:22 2003
+	* the test mp3 is now a 20 second clip, so the dist size is
+	much smaller
+
+	* marked the unimplemented functions as such in the documentation
 
 0.81 Sun Dec  1 22:21:56 CST 2002
 	- fix POD formatting errors

@@ -1,4 +1,6 @@
-# $Id: item.t,v 1.2 2002/09/27 09:20:00 comdog Exp $
+# $Id: item.t,v 1.3 2004/02/03 22:27:11 comdog Exp $
+
+BEGIN { $^W = 0; }
 
 use Test::More tests => 7;
 
@@ -20,6 +22,6 @@ is( $iTunesTest::Time,       $item->seconds, 'Item seconds' );
 is( $iTunesTest::Test_mp3,   $item->file,    'Item file' );
 
 # can we not create an item?
-ok( Mac::iTunes::Item->new_from_mp3( 'foo.mp' ) == 0, 
+is( Mac::iTunes::Item->new_from_mp3( 'foo.mp' ), undef,
 	'Do not make item from missing file' );
 

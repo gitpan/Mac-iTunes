@@ -1,9 +1,10 @@
-# $Id: Item.pm,v 1.12 2002/12/02 04:23:45 comdog Exp $
+# $Id: Item.pm,v 1.14 2004/10/08 21:09:31 comdog Exp $
 package Mac::iTunes::Item;
+use strict;
 
 use vars qw($VERSION);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.12 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.14 $ =~ m/ (\d+) \. (\d+) /gx;
 
 use MP3::Info qw(get_mp3tag);
 
@@ -15,7 +16,7 @@ Mac::iTunes::Item
 
 	use Mac::iTunes::Item;
 
-	my $item = Mac::iTunes::Item->new( 
+	my $item = Mac::iTunes::Item->new(
 		{
 		title    => $title,
 		genre    => $genre,
@@ -32,7 +33,7 @@ Create an iTunes item (aka track).
 
 =head1 METHODS
 
-=over 4 
+=over 4
 
 =item new
 
@@ -220,7 +221,7 @@ STRING
 This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
-	https://sourceforge.net/projects/brian-d-foy/
+	http://sourceforge.net/projects/brian-d-foy/
 
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
@@ -235,7 +236,7 @@ L<Mac::iTunes>, L<Mac::iTunes::Playlist>, L<MP3::Info>
 
 =head1 AUTHOR
 
-brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 

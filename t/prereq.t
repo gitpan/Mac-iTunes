@@ -1,7 +1,5 @@
-# $Id: prereq.t,v 1.2 2002/09/30 05:02:42 comdog Exp $
-
-use Test::More tests => 1;
-use Test::Prereq;
-
-print "bail out! Makefile.PL needs help!"
-	unless prereq_ok( undef, undef, [qw(Mac::iTunes::FileFormat)]);
+#$Id: prereq.t,v 1.6 2004/09/18 16:39:17 comdog Exp $
+use Test::More;
+eval "use Test::Prereq";
+plan skip_all => "Test::Prereq required to test dependencies" if $@;
+prereq_ok();

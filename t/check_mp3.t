@@ -1,10 +1,11 @@
-# $Id: check_mp3.t,v 1.2 2002/11/14 08:04:20 comdog Exp $
+# $Id: check_mp3.t,v 1.3 2004/02/03 22:27:11 comdog Exp $
 use strict;
 
 use Test::More tests => 3;
 use MP3::Info;
 
 use lib  qw(./t/lib ./lib);
+$iTunesTest::Title = undef; # get around "only used once warning"
 
 require "test_data.pl";
 

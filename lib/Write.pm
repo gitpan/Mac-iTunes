@@ -1,7 +1,11 @@
-# $Id: Write.pm,v 1.3 2002/08/30 08:21:47 comdog Exp $
+# $Id: Write.pm,v 1.5 2002/11/27 03:35:05 comdog Exp $
 package Mac::iTunes::Library::Write;
+use strict;
 
 use base qw(Mac::iTunes);
+use vars qw($VERSION $XML_HEAD $XML_FOOT);
+
+$VERSION = sprintf "%d.%02d", q$Revision: 1.5 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -51,7 +55,7 @@ sub as_xml
 	{
 	my $self = shift;
 	
-	$str  = $XML_HEAD;
+	my $str  = $XML_HEAD;
 	
 	
 	$str .= $XML_FOOT;
@@ -115,6 +119,16 @@ XML
 
 =back
 
+=head1 SOURCE AVAILABILITY
+
+This source is part of a SourceForge project which always has the
+latest sources in CVS, as well as all of the previous releases.
+
+	https://sourceforge.net/projects/brian-d-foy/
+	
+If, for some reason, I disappear from the world, one of the other
+members of the project can shepherd this module appropriately.
+
 =head1 SEE ALSO
 
 L<Mac::iTunes>
@@ -125,7 +139,11 @@ L<Mac::iTunes>
 
 =head1 AUTHOR
 
-Copyright 2002, brian d foy <bdfoy@cpan.org>
+brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2002, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

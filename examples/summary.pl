@@ -1,10 +1,10 @@
 #!/usr/bin/perl -w
-# $Id: summary.pl,v 1.2 2002/07/17 07:14:56 comdog Exp $
+# $Id: summary.pl,v 1.3 2002/11/14 07:44:44 comdog Exp $
 use strict;
 
 =head1 NAME
 
-example/summary.pl
+examples/summary.pl
 
 =head1 SYNOPSIS
 
@@ -14,17 +14,17 @@ perl summary.pl ../mp3/"iTunes Music Library"
 
 =head1 DESCRIPTION
 
-This script is a short example of the MacOSX::iTunes module.
+This script is a short example of the Mac::iTunes module.
 It pretty-prints a summary of your iTunes library.
 
 =cut
 
-use MacOSX::iTunes;
+use Mac::iTunes;
 
 my $file = $ARGV[0];
 die "file [$file] does not exist\n" unless -e $file;
 
-my $itunes = MacOSX::iTunes->read( $file );
+my $itunes = Mac::iTunes->read( $file );
 die unless ref $itunes;
 
 my @playlists = $itunes->playlists;
@@ -45,7 +45,7 @@ foreach my $title ( @playlists )
 
 =head1 SEE ALSO
 
-L<MacOSX::iTunes>
+L<Mac::iTunes>
 
 =head1 AUTHOR
 

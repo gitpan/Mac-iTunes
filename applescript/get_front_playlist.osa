@@ -1,0 +1,1 @@
+tell application "iTunes"	copy (a reference to (get view of front window)) to thePlaylist	return name of thePlaylistend tell

@@ -1,0 +1,1 @@
+(* $Id: same_file_name.osa,v 1.1 2002/09/24 08:31:56 comdog Exp $ *)tell application "iTunes"	set myList to playlist "Library"	set myTrack to file track 1 of myList	copy location of myTrack to myLoc	set myName to name of myTrack	copy (get info for myLoc) to myInfo	return myLocend tell

@@ -1,6 +1,10 @@
-# $Id: Playlist.pm,v 1.6 2002/09/27 09:17:31 comdog Exp $
+# $Id: Playlist.pm,v 1.10 2002/11/27 03:35:05 comdog Exp $
 package Mac::iTunes::Playlist;
 use strict;
+
+use vars qw($VERSION);
+
+$VERSION = sprintf "%d.%02d", q$Revision: 1.10 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -85,7 +89,7 @@ sub new_from_directory
 	my @items = ();
 	foreach my $file ( @$array )
 		{
-		my $item = Mac::iTunes::Item->new( $file );
+		my $item = Mac::iTunes::Item->new( { file => $file } );
 		
 		push @items, $item;
 		}
@@ -278,6 +282,46 @@ sub copy
 	return $ref;
 	}
 
+=back
+
+=head2 Publisher
+
+=over 4
+
+=item publish( FORMAT [, FIELDS_REF [, ORDER_REF ] ] )
+
+Output the playlist in some format.
+
+Not implemented.
+
+=cut
+
+my @Publish_fields = [ qw() ];
+my $Default_fields = [ @Publish_fields ];
+my $Default_order  = [ @Publish_fields ];
+
+sub publish
+	{
+	my $self     = shift;
+	my $fields   = shift || $Default_fields;
+	my $order    = shift || $Default_order;
+	
+	unless( UNIVERSAL::isa( $fields, 'ARRAY' ) )
+		{
+		carp();
+		}
+	
+	unless( UNIVERSAL::isa( $order, 'ARRAY' ) )
+		{
+		carp();
+		}
+	
+	}
+	
+=back
+
+=cut
+
 sub _not_implemented
 	{
 	require Carp;
@@ -289,7 +333,15 @@ sub _not_implemented
 		
 "See why 1984 won't be like 1984";
 
-=back
+=head1 SOURCE AVAILABILITY
+
+This source is part of a SourceForge project which always has the
+latest sources in CVS, as well as all of the previous releases.
+
+	https://sourceforge.net/projects/brian-d-foy/
+	
+If, for some reason, I disappear from the world, one of the other
+members of the project can shepherd this module appropriately.
 
 =head1 SEE ALSO
 
@@ -303,7 +355,11 @@ L<Mac::iTunes>, L<Mac::iTunes::Item>
 
 =head1 AUTHOR
 
-Copyright 2002, brian d foy <bdfoy@cpan.org>
+brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2002, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

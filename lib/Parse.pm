@@ -1,14 +1,16 @@
-# $Id: Parse.pm,v 1.4 2002/08/31 22:25:55 comdog Exp $
+# $Id: Parse.pm,v 1.9 2002/11/27 03:35:05 comdog Exp $
 package Mac::iTunes::Library::Parse;
 use strict;
 
-use vars qw($Debug $Ate %hohm_types $iTunes_version);
+use vars qw($Debug $Ate %hohm_types $iTunes_version $VERSION);
 
 use Carp qw(carp croak);
 
 use Mac::iTunes;
 use Mac::iTunes::Item;
 use Mac::iTunes::Playlist;
+
+$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /gx;
 
 $Debug = $ENV{ITUNES_DEBUG} || 0;
 $Ate   = 0;
@@ -85,7 +87,7 @@ sub parse
 		}
 		
 	require Data::Dumper;
-	
+	$Data::Dumper::Indent = 1;
 	print STDERR Data::Dumper::Dumper( $itunes ), "\n" if $Debug;
 	
 	$itunes;	
@@ -185,21 +187,37 @@ sub htim
 
 	my( $track )  = unpack( "I", ${eat( $ref, 4 )} );
 	my( $tracks ) = unpack( "I", ${eat( $ref, 4 )} );
-	eat( $ref, 6);
+
+	eat( $ref, 2);
+
+	my( $year )   = unpack( "S", ${eat( $ref, 2)} );
+
+	eat( $ref, 2);
 	
 	my( $bit_rate )    = unpack( "S", ${eat( $ref, 2)} );
 	my( $sample_rate ) = unpack( "S", ${eat( $ref, 2)} );
-	
-	eat( $ref, 5*4 + 2 );
-	my( $creator ) = unpack( "A*", ${eat( $ref, 4 )} );
+
+	eat( $ref, 2);
+
+	my( $volume )      = unpack( "I", ${eat( $ref, 4 )} );
+	my( $start )       = unpack( "I", ${eat( $ref, 4 )} );
+	my( $end )         = unpack( "I", ${eat( $ref, 4 )} );
+	my( $play_count )  = unpack( "I", ${eat( $ref, 4 )} );
+
+	eat( $ref, 2);
+
+	my( $compilation ) = unpack( "S", ${eat( $ref, 2)} );
+
 	eat( $ref, 3*4 );
-	my( $play_date ) = _date_parse(
-		unpack( "I", ${eat( $ref, 4 )} ) 
-		);
-	eat( $ref, 4 );
+	
+	my( $play_count2 )  = unpack( "I", ${eat( $ref, 4 )} );
+	
+	my( $play_date ) = _date_parse( unpack( "I", ${eat( $ref, 4 )} )  );
+	my( $disk )      = unpack( "S", ${eat( $ref, 2)} );
+	my( $disks )     = unpack( "S", ${eat( $ref, 2)} );
 	
 	my( $rating ) = unpack( "S", "\000" . ${eat( $ref, 1)} );
-	eat( $ref, 3*4 );
+	eat( $ref, 11 );
 	my( $add_date ) = _date_parse(
 		unpack( "I", ${eat( $ref, 4 )} ) 
 		);
@@ -211,17 +229,25 @@ sub htim
 	print  STDERR "\ttype is $type\n" if $Debug;
 	print  STDERR "\tdate modified is $date_modified [" . 
 		localtime($date_modified) . "]\n" if $Debug;
-	print  STDERR "\tfile type is $file_type\n" if $Debug;
-	print  STDERR "\tcreator is $creator\n" if $Debug;
-	print  STDERR "\tplay date is $play_date [" . 
-		localtime($play_date) . "]\n" if $Debug;
-	print  STDERR "\tadd date is $add_date\n" if $Debug;
-	print  STDERR "\tbytes is $bytes\n" if $Debug;
+	print  STDERR "\tfile size is $bytes\n" if $Debug;
+	print  STDERR "\tplay time is $time ms\n" if $Debug;
 	print  STDERR "\ttrack is $track of $tracks\n" if $Debug;
+	print  STDERR "\tyear is $year ms\n" if $Debug;
 	print  STDERR "\tbit rate is $bit_rate\n" if $Debug;
 	print  STDERR "\tsample rate is $sample_rate\n" if $Debug;
+	print  STDERR "\tvolume adjustment is $volume\n" if $Debug;
+	print  STDERR "\tstart time is $start ms\n" if $Debug;
+	print  STDERR "\tend time is $end ms\n" if $Debug;
+	print  STDERR "\tplay count is $play_count\n" if $Debug;
+	print  STDERR "\tplay count2 is $play_count2\n" if $Debug;
+	print  STDERR "\tcompilation is $compilation\n" if $Debug;
+	print  STDERR "\tfile type is $file_type\n" if $Debug;
+	print  STDERR "\tplay date is $play_date [" . 
+		localtime($play_date) . "]\n" if $Debug;
+	print  STDERR "\tdisk is $disk of $disks\n" if $Debug;
 	printf STDERR "\trating is %xh [%dd] => %d stars\n", $rating, 
 		$rating, $rating / 20 if $Debug;
+	print  STDERR "\tadd date is $add_date\n" if $Debug;
 
 	eat( $ref, $header_length - $Ate );
 		
@@ -239,21 +265,35 @@ sub htim
 				
 	my $item = Mac::iTunes::Item->new(
 		{
-		title     => $hash{title},
-		genre     => $hash{genre},
-		seconds   => $time,
-		filesize  => $bytes,
-		file      => $hash{filename},
-		artist    => $hash{artist},
-		album     => $hash{album},
-		file_type => $hash{"file type"},
-		creator   => $hash{creator},
-		volume    => $hash{volume},
-		directory => $hash{directory},
-		path      => $hash{path},
-		track     => $track,
-		tracks    => $tracks,
-		url       => $hash{url},
+		add_date      => $add_date,
+		album         => $hash{album},
+		artist        => $hash{artist},
+		bit_rate      => $bit_rate,
+		compilation   => $compilation,
+		composer      => $hash{composer},
+		creator       => $hash{creator},
+		date_modified => $date_modified,
+		directory     => $hash{directory},
+		disk          => $disk,
+		disks         => $disks,
+		file          => $hash{filename},
+		file_size     => $bytes,
+		file_type     => $hash{"file type"},
+		genre         => $hash{genre},
+		path          => $hash{path},
+		play_count    => $play_count,
+		play_date     => $play_date,
+		rating        => $rating,
+		sample_rate   => $sample_rate,
+		seconds       => $time,
+		start_time    => $start,
+		end_time      => $end,
+		title         => $hash{title},
+		track         => $track,
+		tracks        => $tracks,
+		url           => $hash{url},
+		volume        => $hash{volume},
+		year          => $year,
 		}
 		);
 	
@@ -271,6 +311,9 @@ BEGIN {
 	5   => 'genre',
 	6   => 'file type',
 	11  => 'url',              # version 3.0
+	12  => 'composer',
+	58  => 'eq_unknown',
+	60  => 'eq_setting',
 	100 => 'playlist',
 	101 => 'smart playlist 1', # version 3.0
 	102 => 'smart playlist 2', # version 3.0
@@ -308,7 +351,8 @@ sub hohm
 		eat( $ref, 4 ) for 1 .. 2;
 	
 		($data) = unpack( 'A*', ${eat( $ref, $dl )} );
-		
+		_strip_nulls( $data );
+
 		$hohm{ $hohm_types{$type} } = $data;
 		}
 	elsif( $type == 1 )
@@ -327,11 +371,12 @@ sub hohm
 		
 		my ($volume) = unpack( 'A*', ${eat( $ref, $next_len )} );
 		print STDERR "\tVolume is [$volume]\n" if $Debug;
+		_strip_nulls( $volume );
 		$hohm{volume} = $volume;
-		eat( $ref, 5*4 );
-		
+		eat( $ref, 27 - $next_len ); # ???  why 27?
+
 		my( $some_date ) = unpack( 'I', ${eat( $ref, 4 )} );
-		printf STDERR "\tSome date is %X\n", $some_date if $Debug;
+		my( $some_date ) = unpack( 'I', $data );
 		
 		$some_date = _date_parse( $some_date );
 			
@@ -339,21 +384,24 @@ sub hohm
 			if $Debug;
 
 		eat( $ref, 2*4 ) if $iTunes_version =~ /^3/;
-		
+
 		($next_len) = unpack( 'S', "\000" . ${eat( $ref, 1 )} );
 		print STDERR "\tfilename length is $next_len\n" if $Debug;
 
 		my ($filename) = unpack( 'A*', ${eat( $ref, $next_len )} );
 		print STDERR "\tfilename is [$filename]\n" if $Debug;
+		_strip_nulls( $filename );
 		$hohm{filename} = $filename;
 		eat( $ref, 71 -  $next_len);
 	
 		my ($filetype) = unpack( 'A*', ${eat( $ref, 4 )} );
 		print STDERR "\tfiletype is [$filetype]\n" if $Debug;
+		_strip_nulls( $filetype );
 		$hohm{filetype} = $filetype;
 
 		my ($creator)  = unpack( 'A*', ${eat( $ref, 4 )} );
 		print STDERR "\tcreator is [$creator]\n" if $Debug;
+		_strip_nulls( $creator );
 		$hohm{creator} = $creator;
 
 		eat( $ref, 5 * 4 );
@@ -362,6 +410,7 @@ sub hohm
 
 		my ($directory) = unpack( 'A*', ${eat( $ref, $next_len )} );
 		print STDERR "\tdirectory is [$directory]\n" if $Debug;
+		_strip_nulls( $directory );
 		$hohm{directory} = $directory;
 		
 		# i don't know what this chunk of gobbledygook is
@@ -403,6 +452,9 @@ sub hohm
 		eat( $ref, 2*4 );
 		
 		my ($playlist) = unpack( 'A*', ${eat( $ref, $next_len )} );
+		_strip_nulls( $playlist );
+		$playlist = 'Library' if $playlist eq '####!####';
+		
 		print STDERR "\tplaylist is [$playlist]\n" if $Debug;
 		$hohm{playlist} = $playlist;
 	
@@ -461,6 +513,9 @@ sub hpim
 	foreach my $index ( 1 .. $hohms )
 		{
 		my $result = $Dispatch{'hohm'}->( $ref );
+		require Data::Dumper;
+		
+		print STDERR Data::Dumper::Dumper( $result ) if $Debug;
 		
 		if( $result->{type} == 0x64 )
 			{
@@ -521,7 +576,7 @@ sub eat
 	my $ref = shift;
 	my $l   = shift;
 	$Ate += $l;
-	
+
 	my $data = substr( $$ref, 0, $l );
 	
 	substr( $$ref, 0, $l ) = '';
@@ -529,9 +584,24 @@ sub eat
 	\$data;
 	}
 
+sub _strip_nulls
+	{
+	$_[0] =~ s/\000//g;
+	}
+	
 "See why 1984 won't be like 1984";
 
 =back
+
+=head1 SOURCE AVAILABILITY
+
+This source is part of a SourceForge project which always has the
+latest sources in CVS, as well as all of the previous releases.
+
+	https://sourceforge.net/projects/brian-d-foy/
+	
+If, for some reason, I disappear from the world, one of the other
+members of the project can shepherd this module appropriately.
 
 =head1 SEE ALSO
 
@@ -545,7 +615,11 @@ L<Mac::iTunes>, L<Mac::iTunes::Item>
 
 =head1 AUTHOR
 
-Copyright 2002, brian d foy <bdfoy@cpan.org>
+brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2002, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

@@ -1,13 +1,16 @@
+# $Id: AppleScript.pm,v 1.9 2002/11/27 03:35:05 comdog Exp $
 package Mac::iTunes::AppleScript;
 use strict;
 
 use base qw(Exporter);
-use vars qw($AUTOLOAD @EXPORT_OK %EXPORT_TAGS);
+use vars qw($AUTOLOAD @EXPORT_OK %EXPORT_TAGS $VERSION);
 
 use Carp qw(carp);
 use File::Spec;
 use Mac::AppleScript qw(RunAppleScript);
 use Mac::Path::Util;
+
+$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /gx;
 
 my $Singleton = undef;
 @EXPORT_OK = qw(TRUE FALSE PLAYING STOPPED PAUSED SMALL MEDIUM LARGE);
@@ -227,7 +230,7 @@ sub open_url
 	my $self = shift;
 	my $url  = shift;
 
-	$self->tell("open location $url");
+	$self->tell( qq|open location "$url"| );
 	}
 
 =back
@@ -284,6 +287,8 @@ sub _get_mac_path
 	return unless -e $path;
 	
 	my $util = Mac::Path::Util->new( $path );
+	$util->use_applescript(1);
+	
 	my $mac_path = $util->mac_path;
 	
 	return $mac_path;
@@ -699,9 +704,27 @@ the following symbolic constants:
 
 =back
 
+=head1 SOURCE AVAILABILITY
+
+This source is part of a SourceForge project which always has the
+latest sources in CVS, as well as all of the previous releases.
+
+	https://sourceforge.net/projects/brian-d-foy/
+	
+If, for some reason, I disappear from the world, one of the other
+members of the project can shepherd this module appropriately.
+
 =head1 SEE ALSO
 
 =head1 AUTHOR
+
+brian d foy,  E<lt>bdfoy@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2002, brian d foy, All rights reserved
+
+You may redistribute this under the same terms as Perl.
 
 =cut
 

@@ -1,4 +1,4 @@
-# $Id: iTunes.pm,v 1.6 2002/09/01 12:23:07 comdog Exp $
+# $Id: iTunes.pm,v 1.11 2002/11/27 03:46:05 comdog Exp $
 package Mac::iTunes;
 use strict;
 
@@ -10,13 +10,19 @@ use Mac::iTunes::Playlist;
 
 require Exporter;
 
-$VERSION = '0.7';
+$VERSION = '0.80';
 
 =head1 NAME
 
-Mac::iTunes -
+Mac::iTunes - interact with and control iTunes
 
 =head1 SYNOPSIS
+
+use Mac::iTunes;
+
+my $controller = Mac::iTunes->controller();
+
+my $library = Mac::iTunes->new( $library_path );
 
 =head1 DESCRIPTION
 
@@ -26,9 +32,8 @@ Mac::iTunes -
 
 =item new()
 
-Creates a new Mac::iTunes object.  If you specify a filename argument
-the object uses that file as the iTunes Music Library to initialize
-the object, otherwise the object is empty (so you can build a new library).
+Creates a new, empty Mac::iTunes object.  If you want to read a 
+current library, use read().
 
 Returns false on failure.
 
@@ -270,7 +275,21 @@ sub _not_implemented
 
 * everything - the list of things already done is much shorter.
 
+* speed everything up 100 times
+
 =head1 BUGS
+
+* plenty
+
+=head1 SOURCE AVAILABILITY
+
+This source is part of a SourceForge project which always has the
+latest sources in CVS, as well as all of the previous releases.
+
+	https://sourceforge.net/projects/brian-d-foy/
+	
+If, for some reason, I disappear from the world, one of the other
+members of the project can shepherd this module appropriately.
 
 =head1 AUTHOR
 

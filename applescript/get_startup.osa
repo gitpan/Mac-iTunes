@@ -1,0 +1,1 @@
+(* $Id: get_startup.osa,v 1.2 2002/09/24 08:31:56 comdog Exp $ *)return path to startup disk as string

@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.11 2002/09/27 09:40:08 comdog Exp $
+# $Id: Makefile.PL,v 1.15 2002/11/27 04:09:58 comdog Exp $
 use ExtUtils::MakeMaker;
 
 open IN,  "mp3/iTunes_Music_Library";
@@ -18,7 +18,7 @@ sub ExtUtils::MM_Any::test_via_harness
 	
 WriteMakefile(
     'NAME'		    => 'Mac::iTunes',
-	'VERSION'       => '0.7',
+	'VERSION_FROM'  => 'lib/iTunes.pm',
 	
     'PM'            => {
      	'lib/AppleScript.pm'  => '$(INST_LIBDIR)/iTunes/AppleScript.pm',
@@ -33,18 +33,30 @@ WriteMakefile(
 
 	'PREREQ_PM' => {
 		'File::Find::Rule'  => '0',
-		'Mac::AppleScript'  => '0',
-		'Mac::Path::Util'   => '0',
+		'Mac::AppleScript'  => '0.03',
+		'Mac::Path::Util'   => '0.07',
 		'Mac::PropertyList' => '0',
 		'MP3::Info'         => '0',
 		'Test::Data'        => '0',
-		'Test::Manifest'    => '0',
+		'Test::Manifest'    => '0.9',
 		'Test::More'        => '0',
-		'Test::Pod'         => '0',
-		'Test::Prereq'      => '0.05',
+		'Test::Pod'         => '0.72',
+		'Test::Prereq'      => '0.18',
 		'Time::HiRes'       => '0',
 		},
-		    	
-    clean  => { FILES      => q|"mp3/iTunes Music Library"| },
+		
+	'MAN3PODS' =>
+		{
+		'lib/AppleScript.pm'  => '$(INST_MAN3DIR)/Mac::iTunes::AppleScript.3',
+		'lib/Item.pm'         => '$(INST_MAN3DIR)/Mac::iTunes::Item.3',
+		'lib/iTunes.pm'       => '$(INST_MAN3DIR)/Mac::iTunes.3',
+		'lib/Parse.pm'        => '$(INST_MAN3DIR)/Mac::iTunes::Parse.3',
+		'lib/Playlist.pm'     => '$(INST_MAN3DIR)/Mac::iTunes::Playlist.3',
+		'lib/Preferences.pm'  => '$(INST_MAN3DIR)/Mac::iTunes::Preferences.3',
+		'lib/Write.pm'        => '$(INST_MAN3DIR)/Mac::iTunes::Write.3',
+    	'doc/file_format.pod' => '$(INST_MAN3DIR)/Mac::iTunes::FileFormat.3',
+		},
+	    	
+    clean  => { FILES      => q|Mac-iTunes-* mp3/iTunes\\ Music\\ Library| },
     	
 	);

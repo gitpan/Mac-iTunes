@@ -1,4 +1,4 @@
-# $Id: MANIFEST,v 1.4 2002/08/30 08:21:46 comdog Exp $
+# $Id: MANIFEST,v 1.5 2002/08/31 22:23:02 comdog Exp $
 Changes
 MANIFEST
 Makefile.PL
@@ -21,9 +21,11 @@ mp3/empty3.mp3
 mp3/iTunes_Music_Library
 t/test_manifest
 t/load.t
+t/pod.t
 t/parse.t
 t/parse3.t
 t/write.t
 t/item.t
 t/playlist.t
 t/itunes.t
+t/controller.t

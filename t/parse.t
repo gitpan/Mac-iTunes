@@ -1,13 +1,13 @@
-# $Id: parse.t,v 1.1 2002/08/30 08:21:47 comdog Exp $
+# $Id: parse.t,v 1.2 2002/08/31 22:28:17 comdog Exp $
 
 use Test::More tests => 3;
 
-use MacOSX::iTunes;
-use MacOSX::iTunes::Library::Parse;
+use Mac::iTunes;
+use Mac::iTunes::Library::Parse;
 
 my $File = "mp3/iTunes Music Library";
 my $fh;
 
 ok( open( $fh, $File ), 'Open music library' );
 isa_ok( Mac::iTunes::Library::Parse->parse( $fh ), 'Mac::iTunes' );
-ias_ok( Mac::iTunes->read( $File ), 'Mac::iTunes' );
+isa_ok( Mac::iTunes->read( $File ), 'Mac::iTunes' );

@@ -3,4 +3,6 @@ pod.t
 itunes.t
 item.t
 playlist.t
+parse.t
+parse3.t
 controller.t

@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.5 2002/08/30 08:21:47 comdog Exp $
+# $Id: Makefile.PL,v 1.7 2002/08/31 23:23:05 comdog Exp $
 use ExtUtils::MakeMaker;
 
 open IN,  "mp3/iTunes_Music_Library";
@@ -10,7 +10,7 @@ use Test::Manifest qw(get_t_files);
 
 WriteMakefile(
     'NAME'		    => 'Mac::iTunes',
-	'VERSION'       => '0.5_03',
+	'VERSION'       => '0.6_01',
 	
     'PM'            => {
     	'lib/iTunes.pm'       => '$(INST_LIBDIR)/iTunes.pm',
@@ -24,11 +24,14 @@ WriteMakefile(
 
 	'PREREQ_PM' => {
 		Test::Manifest    => undef,
+		Test::More        => undef,
+		Test::Pod         => undef,
 		Mac::AppleScript  => undef,
 		Mac::PropertyList => undef,
 		},
 		    	
     test   => { TESTS      => scalar get_t_files() },
     depend => { 'Makefile' => 't/test_manifest' },
+    clean  => { FILES      => q|"mp3/iTunes Music Library"| },
     	
 	);

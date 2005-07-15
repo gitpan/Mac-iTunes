@@ -1,5 +1,10 @@
-# $Id: Changes,v 1.5 2003/01/03 20:34:08 comdog Exp $
+# $Id: Changes,v 1.6 2004/10/08 21:16:55 comdog Exp $
 Revision history for Perl extension MacOSX::iTunes.
+
+0.84 - Fri Oct  8 16:15:49 2004
+* i fixed up a few distribution things, but this module needs a 
+lot of work to catch up to the current state of iTunes.  You
+probably don't want this unless you are dealing with iTunes 3
 
 0.82 - Fri Jan  3 12:33:22 2003
 	* the test mp3 is now a 20 second clip, so the dist size is

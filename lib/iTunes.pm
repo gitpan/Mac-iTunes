@@ -1,4 +1,4 @@
-# $Id: iTunes.pm,v 1.16 2005/07/15 05:12:12 comdog Exp $
+# $Id: iTunes.pm,v 1.17 2006/06/23 14:37:03 comdog Exp $
 package Mac::iTunes;
 use strict;
 
@@ -11,7 +11,7 @@ use Mac::iTunes::Playlist;
 
 require Exporter;
 
-$VERSION = '0.85';
+$VERSION = '0.86';
 
 =head1 NAME
 
@@ -324,7 +324,7 @@ brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2005, brian d foy, All rights reserved
+Copyright 2004-2006, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

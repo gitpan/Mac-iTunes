@@ -1,17 +1,7 @@
-# $Id: Makefile.PL,v 1.24 2005/07/15 05:36:43 comdog Exp $
+# $Id: Makefile.PL,v 1.25 2006/06/23 14:37:03 comdog Exp $
 use ExtUtils::MakeMaker;
 
-eval "use Test::Manifest";
-unless( $@ )
-	{
-	*ExtUtils::MM_Any::test_via_harness = sub {
-		my($self, $perl, $tests) = @_;
-	
-		return qq|\t$perl "-MTest::Manifest" | .
-		   qq|"-e" "run_t_manifest(\$(TEST_VERBOSE), '\$(INST_LIB)', | .
-		   qq|'\$(INST_ARCHLIB)')"\n|;
-		}
-	}
+eval "use Test::Manifest 1.14";
 	
 # if we are running under Test::Prereq, we do not want side effects
 my $TestPrereq = grep { m/Test.{1,2}Prereq.pm$/ } keys %INC;

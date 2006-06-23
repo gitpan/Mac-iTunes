@@ -1,4 +1,4 @@
-# $Id: Parse.pm,v 1.20 2005/07/15 05:12:12 comdog Exp $
+# $Id: Parse.pm,v 1.21 2006/06/23 14:37:03 comdog Exp $
 package Mac::iTunes::Library::Parse;
 use strict;
 
@@ -10,7 +10,7 @@ use Mac::iTunes;
 use Mac::iTunes::Item;
 use Mac::iTunes::Playlist;
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.20 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.21 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -830,7 +830,7 @@ brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2004, brian d foy, All rights reserved
+Copyright 2004-2006, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

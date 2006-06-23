@@ -1,11 +1,11 @@
-# $Id: Write.pm,v 1.9 2004/09/18 16:39:17 comdog Exp $
+# $Id: Write.pm,v 1.10 2006/06/23 14:37:03 comdog Exp $
 package Mac::iTunes::Library::Write;
 use strict;
 
 use base qw(Mac::iTunes);
 use vars qw($VERSION $XML_HEAD $XML_FOOT);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.10 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -140,7 +140,7 @@ brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2002, brian d foy, All rights reserved
+Copyright 2002-2006, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

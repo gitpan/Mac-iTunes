@@ -1,10 +1,10 @@
-# $Id: Preferences.pm,v 1.8 2004/09/18 16:39:17 comdog Exp $
+# $Id: Preferences.pm,v 1.9 2006/06/23 14:37:03 comdog Exp $
 package Mac::iTunes::Preferences;
 use strict;
 
 use vars qw($VERSION);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.8 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -81,7 +81,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2002, brian d foy, All rights reserved.
+Copyright 2002-2006, brian d foy, All rights reserved
 
 You may use this software under the same terms as Perl
 itself.

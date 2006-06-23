@@ -1,10 +1,10 @@
-# $Id: Playlist.pm,v 1.14 2004/09/18 16:39:17 comdog Exp $
+# $Id: Playlist.pm,v 1.15 2006/06/23 14:37:03 comdog Exp $
 package Mac::iTunes::Playlist;
 use strict;
 
 use vars qw($VERSION);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.14 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.15 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -362,7 +362,7 @@ brian d foy,  C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright 2002, brian d foy, All rights reserved
+Copyright 2002-2006, brian d foy, All rights reserved
 
 You may redistribute this under the same terms as Perl.
 

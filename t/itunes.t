@@ -1,4 +1,4 @@
-# $Id: itunes.t,v 1.4 2004/02/03 22:27:11 comdog Exp $
+# $Id: itunes.t 1119 2004-02-03 22:27:11Z comdog $
 
 use Test::More tests => 18;
 

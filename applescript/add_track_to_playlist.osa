@@ -1,1 +1,7 @@
-(* $Id: add_track_to_playlist.osa,v 1.1 2002/09/24 08:31:56 comdog Exp $ *)tell application "iTunes"	set myName to alias "Otter:Users:brian:Dev:MacOSX:iTunes:mp3:The_Wee_Kirkcudbright_Centipede.mp3"	add myName to playlist "Mac-iTunes test"	end tell
+(* $Id: add_track_to_playlist.osa 376 2002-09-24 08:31:56Z comdog $ *)
+
+tell application "iTunes"
+	set myName to alias "Otter:Users:brian:Dev:MacOSX:iTunes:mp3:The_Wee_Kirkcudbright_Centipede.mp3"
+	add myName to playlist "Mac-iTunes test"
+	
+end tell

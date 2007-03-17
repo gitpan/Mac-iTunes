@@ -1,4 +1,4 @@
-# $Id: version_check.t,v 1.1 2005/07/15 05:12:12 comdog Exp $
+# $Id: version_check.t 1656 2005-07-15 05:12:12Z comdog $
 
 use Test::More tests => 4;
 

@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: publisher.pl,v 1.1 2002/11/14 07:41:45 comdog Exp $
+# $Id: publisher.pl 576 2002-11-14 07:41:45Z comdog $
 use strict;
 
 =head1 NAME

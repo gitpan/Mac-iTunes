@@ -1,4 +1,4 @@
-# $Id: setup_itunes.t,v 1.5 2004/02/03 22:27:11 comdog Exp $
+# $Id: setup_itunes.t 1119 2004-02-03 22:27:11Z comdog $
 use strict;
 
 BEGIN { $^W = 0 };

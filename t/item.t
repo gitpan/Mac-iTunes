@@ -1,4 +1,4 @@
-# $Id: item.t,v 1.3 2004/02/03 22:27:11 comdog Exp $
+# $Id: item.t 1119 2004-02-03 22:27:11Z comdog $
 
 BEGIN { $^W = 0; }
 

@@ -1,10 +1,11 @@
-# $Id: Plist.pm,v 1.6 2006/06/23 14:37:03 comdog Exp $
+# $Id: Plist.pm 2206 2007-03-17 02:02:40Z comdog $
 package Mac::iTunes::Library::Plist;
 use strict;
 
 use vars qw($VERSION);
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.6 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.06;
+#sprintf "%d.%02d", q$Revision: 2206 $ =~ m/ (\d+) \. (\d+) /gx;
 
 =head1 NAME
 
@@ -32,12 +33,12 @@ members of the project can shepherd this module appropriately.
 
 brian d foy, C<< <bdfoy@cpan.org> >>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2002-2006, brian d foy, All rights reserved
+Copyright (c) 2002-2007 brian d foy.  All rights reserved.
 
-You may use this software under the same terms as Perl
-itself.
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
 

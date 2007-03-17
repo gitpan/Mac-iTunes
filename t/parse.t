@@ -1,4 +1,4 @@
-# $Id: parse.t,v 1.3 2004/02/05 12:18:19 comdog Exp $
+# $Id: parse.t 1124 2004-02-05 12:18:19Z comdog $
 
 use Test::More tests => 4;
 

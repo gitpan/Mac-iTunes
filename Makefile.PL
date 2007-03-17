@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.25 2006/06/23 14:37:03 comdog Exp $
+# $Id: Makefile.PL 2206 2007-03-17 02:02:40Z comdog $
 use ExtUtils::MakeMaker;
 
 eval "use Test::Manifest 1.14";
@@ -27,7 +27,7 @@ parse.t
 version_check.t
 #parse3.t
 #parse4.t
-parse_audible.t
+#parse_audible.t
 preferences.t
 HERE
 	
@@ -78,8 +78,10 @@ my @Mac_docs = $Mac ? qw(
 	) : ();
 	
 WriteMakefile(
-    'NAME'	    => 'Mac::iTunes',
+    'NAME'          => 'Mac::iTunes',
     'VERSION_FROM'  => 'lib/iTunes.pm',
+	'LICENSE'       => 'perl',
+	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 	
     'PM'            => {
     	@Mac_specific,
@@ -99,6 +101,7 @@ WriteMakefile(
 		'MP3::Info'         => '0',
 		'Test::Manifest'    => '0.9',
 		'Test::More'        => '0',
+		'Test::Manifest'    => '1.14',
 		},
 
 	'MAN3PODS' =>

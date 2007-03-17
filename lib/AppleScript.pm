@@ -1,4 +1,4 @@
-# $Id: AppleScript.pm,v 1.13 2006/06/23 14:37:03 comdog Exp $
+# $Id: AppleScript.pm 2206 2007-03-17 02:02:40Z comdog $
 package Mac::iTunes::AppleScript;
 use strict;
 
@@ -10,7 +10,8 @@ use File::Spec;
 use Mac::AppleScript qw(RunAppleScript);
 use Mac::Path::Util;
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.13 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.14;
+#sprintf "%d.%02d", q$Revision: 2206 $ =~ m/ (\d+) \. (\d+) /gx;
 
 my $Singleton = undef;
 @EXPORT_OK = qw(TRUE FALSE PLAYING STOPPED PAUSED SMALL MEDIUM LARGE);
@@ -718,11 +719,12 @@ members of the project can shepherd this module appropriately.
 
 brian d foy,  C<< <bdfoy@cpan.org> >>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2002-2006, brian d foy, All rights reserved
+Copyright (c) 2002-2007 brian d foy.  All rights reserved.
 
-You may redistribute this under the same terms as Perl.
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
 

@@ -1,4 +1,4 @@
-(* $Id: current_name.osa,v 1.1 2002/09/20 22:50:31 comdog Exp $ *)
+(* $Id: current_name.osa 353 2002-09-20 22:50:32Z comdog $ *)
 (* this works for the track currently selected *)
 tell application "iTunes"
 	return name of current track

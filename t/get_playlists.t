@@ -1,4 +1,4 @@
-# $Id: get_playlists.t,v 1.3 2004/02/03 22:27:11 comdog Exp $
+# $Id: get_playlists.t 1119 2004-02-03 22:27:11Z comdog $
 use strict;
 
 use Test::More;

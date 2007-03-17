@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: tk-itunes.pl,v 1.4 2002/09/30 05:00:18 comdog Exp $
+# $Id: tk-itunes.pl 389 2002-09-30 05:00:18Z comdog $
 use strict;
 
 =head1 NAME

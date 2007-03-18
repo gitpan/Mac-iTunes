@@ -1,4 +1,4 @@
-# $Id: iTunes.pm 2206 2007-03-17 02:02:40Z comdog $
+# $Id: iTunes.pm 2218 2007-03-18 15:54:56Z comdog $
 package Mac::iTunes;
 use strict;
 
@@ -11,7 +11,7 @@ use Mac::iTunes::Playlist;
 
 require Exporter;
 
-$VERSION = '0.88';
+$VERSION = '0.89';
 
 =head1 NAME
 

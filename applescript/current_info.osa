@@ -1,5 +1,0 @@
-(* $Id: current_info.osa 353 2002-09-20 22:50:32Z comdog $ *)
-
-tell application "iTunes"
-	return name of current track & "|" & artist of current track & "|" & album of current track
-end tell

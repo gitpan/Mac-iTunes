@@ -1,3 +1,0 @@
-tell application "iTunes"
-	play track 1 in playlist "Mac-iTunes test"
-end tell

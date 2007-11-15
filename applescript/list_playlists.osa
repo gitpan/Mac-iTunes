@@ -1,6 +1,0 @@
-(* $Id: list_playlists.osa 353 2002-09-20 22:50:32Z comdog $ *)
-
-tell application "iTunes"
-		set thisList to playlists
-		set foo to choose from list playlists with prompt "This is"
-end tell

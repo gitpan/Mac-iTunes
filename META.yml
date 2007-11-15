@@ -1,19 +1,11 @@
---- #YAML:1.0
-name:                Mac-iTunes
-version:             0.89
-abstract:            ~
-license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.31
-distribution_type:   module
-requires:     
-    Mac::AppleScript:              0.03
-    Mac::Path::Util:               0.07
-    Mac::PropertyList:             0
-    MP3::Info:                     0
-    Test::Manifest:                1.14
-    Test::More:                    0
-meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
-author:
-    - brian d foy <bdfoy@cpan.org>
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Mac-iTunes
+version:      0.01_01
+version_from: lib/Mac/iTunes/Library.pm
+installdirs:  site
+requires:
+    XML::Parser:                   0
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.30_01

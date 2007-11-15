@@ -1,3 +1,0 @@
-tell application "iTunes"
-	set view of front window to user playlist "Talking Heads"
-end tell

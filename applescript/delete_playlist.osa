@@ -1,0 +1,12 @@
+(* $Id: delete_playlist.osa 353 2002-09-20 22:50:32Z comdog $ *)
+
+tell application "iTunes"
+	repeat with i from 1 to (the count of the playlists)
+		set this_playlist to playlist i
+		try
+			if the name of this_playlist is "iTunes test" then
+				delete playlist i
+			end if
+		end try
+	end repeat
+end tell

@@ -1,0 +1,6 @@
+(* $Id: add_playlist.osa 353 2002-09-20 22:50:32Z comdog $ *)
+
+tell application "iTunes"
+	set myList to make new playlist
+	set name of myList to "iTunes test"
+end tell

@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: summary.pl 577 2002-11-14 07:44:44Z comdog $
+# $Id$
 use strict;
 
 =head1 NAME

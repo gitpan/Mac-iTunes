@@ -1,5 +1,3 @@
-# $Id: load.t 1484 2004-09-18 16:39:17Z comdog $
-
 use File::Find;
 use Test::More;
 

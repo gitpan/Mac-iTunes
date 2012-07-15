@@ -1,4 +1,4 @@
-(* $Id: delete_playlist.osa 353 2002-09-20 22:50:32Z comdog $ *)
+(* $Id$ *)
 
 tell application "iTunes"
 	repeat with i from 1 to (the count of the playlists)

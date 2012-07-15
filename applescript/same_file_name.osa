@@ -1,4 +1,4 @@
-(* $Id: same_file_name.osa 376 2002-09-24 08:31:56Z comdog $ *)
+(* $Id$ *)
 
 tell application "iTunes"
 	set myList to playlist "Library"

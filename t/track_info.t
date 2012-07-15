@@ -1,4 +1,3 @@
-# $Id: track_info.t 1484 2004-09-18 16:39:17Z comdog $
 use strict;
 
 use lib qw(./t/lib ./lib);

@@ -1,4 +1,4 @@
-# $Id: test_data.pl 786 2003-01-03 20:17:26Z comdog $
+# $Id$
 
 package iTunesTest;
 

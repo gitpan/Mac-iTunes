@@ -1,4 +1,3 @@
-# $Id: iTunes.pm 2634 2008-08-06 12:58:30Z comdog $
 package Mac::iTunes;
 use strict;
 use warnings;
@@ -12,7 +11,7 @@ use Mac::iTunes::Playlist;
 
 require Exporter;
 
-$VERSION = '0.90';
+$VERSION = 1.22;
 
 =head1 NAME
 
@@ -20,12 +19,12 @@ Mac::iTunes - interact with and control iTunes
 
 =head1 SYNOPSIS
 
-use Mac::iTunes;
+	use Mac::iTunes;
 
-# if you have Mac::iTunes::AppleScript
-my $controller = Mac::iTunes->controller();
+	# if you have Mac::iTunes::AppleScript
+	my $controller = Mac::iTunes->controller();
 
-my $library = Mac::iTunes->new( $library_path );
+	my $library = Mac::iTunes->new( $library_path );
 
 =head1 DESCRIPTION
 
@@ -57,7 +56,7 @@ sub new
 
 =item controller()
 
-Creates a new Mac::iTunes controller object.  See L<Mac::iTunes::Applescript>
+Creates a new Mac::iTunes controller object.  See L<Mac::iTunes::AppleScript>
 for methods.  This method is not available on non-Mac systems.
 
 =cut

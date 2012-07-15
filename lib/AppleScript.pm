@@ -1,4 +1,3 @@
-# $Id: AppleScript.pm 2634 2008-08-06 12:58:30Z comdog $
 package Mac::iTunes::AppleScript;
 use strict;
 use warnings;
@@ -11,8 +10,7 @@ use File::Spec;
 use Mac::AppleScript qw(RunAppleScript);
 use Mac::Path::Util;
 
-$VERSION = 1.14;
-#sprintf "%d.%02d", q$Revision: 2634 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.22;
 
 my $Singleton = undef;
 @EXPORT_OK = qw(TRUE FALSE PLAYING STOPPED PAUSED SMALL MEDIUM LARGE);
@@ -35,13 +33,13 @@ Mac::iTunes::AppleScript - control iTunes from Perl
 
 =head1 SYNOPSIS
 
-use Mac::iTunes;
+	use Mac::iTunes;
 
-my $itunes = Mac::iTunes->controller;
+	my $itunes = Mac::iTunes->controller;
 
-$itunes->activate;
-$itunes->play;
-$itunes->quit;
+	$itunes->activate;
+	$itunes->play;
+	$itunes->quit;
 
 =head1 DESCRIPTION
 

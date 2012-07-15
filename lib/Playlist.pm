@@ -1,12 +1,10 @@
-# $Id: Playlist.pm 2634 2008-08-06 12:58:30Z comdog $
 package Mac::iTunes::Playlist;
 use strict;
 use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = 1.15;
-#sprintf "%d.%02d", q$Revision: 2634 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.22;
 
 =head1 NAME
 
@@ -17,7 +15,6 @@ Mac::iTunes::Playlist
 	use Mac::iTunes::Playlist;
 
 	my $playlist = Mac::iTunes::Playlist->new( @items );
-
 
 =head1 DESCRIPTION
 

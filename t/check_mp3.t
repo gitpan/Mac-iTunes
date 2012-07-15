@@ -1,4 +1,3 @@
-# $Id: check_mp3.t 1119 2004-02-03 22:27:11Z comdog $
 use strict;
 
 use Test::More tests => 3;

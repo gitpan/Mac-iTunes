@@ -1,5 +1,3 @@
-# $Id: item.t 1119 2004-02-03 22:27:11Z comdog $
-
 BEGIN { $^W = 0; }
 
 use Test::More tests => 7;

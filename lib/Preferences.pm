@@ -1,12 +1,10 @@
-# $Id: Preferences.pm 2634 2008-08-06 12:58:30Z comdog $
 package Mac::iTunes::Preferences;
 use strict;
 use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = 1.09;
-#sprintf "%d.%02d", q$Revision: 2634 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.22;
 
 =head1 NAME
 
@@ -14,9 +12,9 @@ Mac::iTunes::Preferences - interact with the iTunes Preferences
 
 =head1 SYNOPSIS
 
-use Mac::iTunes;
+	use Mac::iTunes;
 
-$prefs = Mac::iTunes->preferences;
+	$prefs = Mac::iTunes->preferences;
 
 =head1 DESCRIPTION
 

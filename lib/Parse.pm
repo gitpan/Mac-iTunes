@@ -1,4 +1,3 @@
-# $Id: Parse.pm 2634 2008-08-06 12:58:30Z comdog $
 package Mac::iTunes::Library::Parse;
 use strict;
 use warnings;
@@ -11,8 +10,7 @@ use Mac::iTunes;
 use Mac::iTunes::Item;
 use Mac::iTunes::Playlist;
 
-$VERSION = 1.21;
-#sprintf "%d.%02d", q$Revision: 2634 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.22;
 
 =head1 NAME
 

@@ -1,5 +1,3 @@
-# $Id: parse4.t 1122 2004-02-05 11:57:32Z comdog $
-
 use Test::More tests => 4;
 
 use Mac::iTunes;

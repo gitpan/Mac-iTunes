@@ -1,5 +1,3 @@
-# $Id: version_check.t 1656 2005-07-15 05:12:12Z comdog $
-
 use Test::More tests => 4;
 
 use_ok( "Mac::iTunes" );

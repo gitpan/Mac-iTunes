@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: iTunes.cgi 641 2002-12-02 04:23:45Z comdog $
+# $Id$
 use strict;
 
 use CGI qw(:standard);

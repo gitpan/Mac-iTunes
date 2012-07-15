@@ -1,12 +1,10 @@
-# $Id: Write.pm 2206 2007-03-17 02:02:40Z comdog $
 package Mac::iTunes::Library::Write;
 use strict;
 
 use base qw(Mac::iTunes);
 use vars qw($VERSION $XML_HEAD $XML_FOOT);
 
-$VERSION = 1.10;
-#sprintf "%d.%02d", q$Revision: 2206 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.22;
 
 =head1 NAME
 
@@ -14,12 +12,12 @@ Mac::iTunes::Library::Write - create an iTunes Music Library file
 
 =head1 SYNOPSIS
 
-	see the Mac::iTunes documentation
+see the Mac::iTunes documentation
 
 =head1 DESCRIPTION
 
 This module turns a Mac::iTunes object into an C<iTunes Music Library>
-file.
+XML file.
 
 =head1 METHODS
 

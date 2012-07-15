@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: tk-itunes.pl 389 2002-09-30 05:00:18Z comdog $
+# $Id$
 use strict;
 
 =head1 NAME

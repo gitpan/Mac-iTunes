@@ -1,5 +1,3 @@
-# $Id: parse_audible.t 1136 2004-02-10 00:31:37Z comdog $
-
 use Test::More tests => 4;
 
 use Mac::iTunes;

@@ -1,12 +1,10 @@
-# $Id: Item.pm 2634 2008-08-06 12:58:30Z comdog $
 package Mac::iTunes::Item;
 use strict;
 use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = 1.15; 
-#sprintf "%d.%02d", q$Revision: 2634 $ =~ m/ (\d+) \. (\d+) /gx;
+$VERSION = 1.22;
 
 use MP3::Info qw(get_mp3tag);
 

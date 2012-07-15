@@ -1,4 +1,4 @@
-(* $Id: player_state.osa 353 2002-09-20 22:50:32Z comdog $ *)
+(* $Id$ *)
 tell application "iTunes"
 	return player state
 end tell

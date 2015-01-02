@@ -34,14 +34,14 @@ examples/summary.pl
 examples/tabs.tmpl
 html/iTunes.html
 INSTALL
-lib/AppleScript.pm
-lib/Item.pm
-lib/iTunes.pm
-lib/Parse.pm
-lib/Playlist.pm
-lib/Plist.pm
-lib/Preferences.pm
-lib/Write.pm
+lib/Mac/iTunes.pm
+lib/Mac/iTunes/AppleScript.pm
+lib/Mac/iTunes/Item.pm
+lib/Mac/iTunes/Library/Parse.pm
+lib/Mac/iTunes/Library/Plist.pm
+lib/Mac/iTunes/Library/Write.pm
+lib/Mac/iTunes/Playlist.pm
+lib/Mac/iTunes/Preferences.pm
 Libraries/Audible/Audible_file
 LICENSE
 Makefile.PL
@@ -85,4 +85,5 @@ t/version_check.t
 t/write.t
 tk/tk-itunes.pl
 tk/tkitunes.rc
-META.yml                                 Module meta-data (added by MakeMaker)
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)
